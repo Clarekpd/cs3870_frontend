@@ -7,7 +7,7 @@ const Contacts = () => {
     useEffect(() => {
         const fetchContacts = async () => {
             try {
-                const response = await fetch("http://localhost:8081/contacts");
+                const response = await fetch("https://cs3870-backend-y5wj.onrender.com/contacts");
                 if (!response.ok) {
                     throw new Error("Failed to fetch contacts");
                 }
@@ -29,7 +29,7 @@ const Contacts = () => {
         }
         try {
             const encoded = encodeURIComponent(name);
-            const res = await fetch(`http://localhost:8081/contacts/${encoded}`);
+            const res = await fetch(`https://cs3870-backend-y5wj.onrender.com/contacts${encoded}`);
             if (res.status === 404) {
                 const data = await res.json().catch(() => null);
                 setSearchMsg(data?.message || `Contact '${name}' not found.`);
@@ -102,4 +102,5 @@ const Contacts = () => {
         </div>
     );
 };
+
 export default Contacts;
